@@ -1,7 +1,7 @@
 <table id="attachment_<%= attachment.id %>" class="attachment">
   <tr>
     <td><%= attachment.thumbnails.empty? ? "" : 
-         image_tag(attachment.thumbnails.first.public_filename, 
+         image_tag(attachment.thumbnails.find(:first, :conditions => "thumbnail = 'icon'").public_filename, 
                    :class => "thumbnail")%></td>
     <td> <%= File.basename(attachment.public_filename) %></td>
     <td><%= link_to_function image("minus", :title => "Remove attachment"), "remove_attachment(#{attachment.id})" %></td>
